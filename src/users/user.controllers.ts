@@ -1,9 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
+
+type ParamUser = {
+  id: string
+}
 
 @Controller()
 export class UserController {
-  @Get('/helloUser')
-  hellorUser() {
-    return 'Seja bem vindo';
+  @Get('/users/:id')
+  findByid(@Param() params: ParamUser) {
+    return 'usuario é o: ' + params.id;
   }
 }
